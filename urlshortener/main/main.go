@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	urlshortener "example.com/main"
+	urlshortener "example.com/main/urlshortener"
 )
 
 func main() {
