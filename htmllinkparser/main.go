@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	file := flag.String("file", "ex2.html", "file need to be parsed")
+	file := flag.String("file", "ex4.html", "file need to be parsed")
 
 	fd, err := os.Open(*file)
 	if err != nil {
@@ -24,11 +24,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if len(listLinks) > 0 {
-		for index, link := range listLinks {
-			fmt.Printf("Link %d {Link: %s, Text: %s}\n", index, link.Href, link.Text)
-		}
-	}
-	//fmt.Printf("%v", listLinks)
+	// if len(listLinks) > 0 {
+	// 	for index, link := range listLinks {
+	// 		fmt.Printf("Link %d {Link: %s, Text: %s}\n", index, link.Href, link.Text)
+	// 	}
+	// }
+	fmt.Printf("%v", listLinks)
 
 }
