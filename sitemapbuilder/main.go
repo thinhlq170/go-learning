@@ -5,8 +5,10 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 
 	"example.com/main/htmllinkparser/parser"
+	"example.com/main/sitemapbuilder/builder"
 )
 
 func check(e error) {
@@ -17,7 +19,7 @@ func check(e error) {
 
 func main() {
 	var page string
-	fmt.Printf("Pleaser enter wanted page: ")
+	fmt.Printf("Please enter wanted page: ")
 	fmt.Scan(&page)
 
 	_, err := url.ParseRequestURI(page)
@@ -27,11 +29,6 @@ func main() {
 
 	links, err := parser.LinkParser(response.Body)
 
-	//fmt.Println(links)
-	if len(links) > 0 {
-		for index, link := range links {
-			fmt.Printf("Link %d {Link: %s, Text: %s}\n", index, link.Href, link.Text)
-		}
-	}
-
+	errRes := builder.LinkBuilder(page, links, os.Stdout)
+	check(errRes)
 }
